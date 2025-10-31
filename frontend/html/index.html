@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AWS Knowledge Assistant</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">
+      <div class="brand"><span class="dot"></span> AWS Knowledge Assistant</div>
+      <div class="actions">
+        <button id="clearBtn" class="btn secondary" title="Clear chat">Clear Chat</button>
+        <a class="btn secondary" href="#" id="copyBtn" title="Copy last answer">Copy Answer</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="chat" class="chat" aria-live="polite" aria-label="Chat transcript"></div>
+
+      <div class="composer">
+        <div class="composer-inner">
+          <textarea id="composer" class="input" rows="1" placeholder="Ask an AWS question... (Enter to send, Shift+Enter for newline)"></textarea>
+          <button id="sendBtn" class="btn send"><span class="spinner" aria-hidden="true"></span><span class="label">Send</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <script src="../config/config.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

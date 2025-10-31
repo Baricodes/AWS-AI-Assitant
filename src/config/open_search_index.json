@@ -1,0 +1,42 @@
+PUT INDEX_NAME
+{
+  "settings": {
+    "index.knn": true
+  },
+  "mappings": {
+    "properties": {
+
+      "embedding": {
+        "type": "knn_vector",
+        "dimension": 1024,
+        "space_type": "cosinesimil",
+        "mode": "on_disk",               // lower memory cost (optional; use "in_memory" for lowest latency)
+        "compression_level": "16x",      // optional quantization to cut memory further
+        "method": {
+          "name": "hnsw",
+          "engine": "faiss",
+          "parameters": {
+            "m": 16,                     // graph degree (quality vs memory)
+            "ef_construction": 100       // build-time accuracy vs speed
+          }
+        }
+      },
+
+      /* === Minimal required content field for your chunk text === */
+      "chunk_text": { "type": "text" },
+
+      /* === Recommended metadata fields for RAG === */
+      "doc_id":      { "type": "keyword" },  // stable ID for your source document
+      "chunk_id":    { "type": "integer" },  // chunk number in that doc
+      "title":       { "type": "text" },     // document or section title (full-text searchable)
+      "section":     { "type": "text" },     // subsection/heading (full-text searchable)
+      "source":      { "type": "keyword" },  // e.g., "s3", "faq", "web"
+      "s3_key":      { "type": "keyword" },  // exact S3 object key (filterable)
+      "url":         { "type": "keyword" },  // canonical link (not analyzed)
+      "tags":        { "type": "keyword" },  // ["iam","roles","permissions"] for filters/facets
+      "token_count": { "type": "integer" },  // for prompt budgeting
+      "created_at":  { "type": "date" },     // ISO8601 timestamp
+      "updated_at":  { "type": "date" }      // optional maintenance
+    }
+  }
+}

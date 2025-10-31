@@ -1,0 +1,55 @@
+# macOS
+.DS_Store
+
+# Node / frontend
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+.parcel-cache/
+.next/
+out/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+venv/
+.mypy_cache/
+
+# Environment / editor
+.env
+.env.*
+.vscode/
+.idea/
+
+# Terraform
+.terraform/
+.terraform/*
+terraform.tfstate
+terraform.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*.override.tf
+*.override.tf.json
+*.tfvars.json
+*.tfvars.backup
+*.tfplan
+
+# Docker
+*.tar
+
+# Generated frontend config
+frontend/config/config.js
+
+# Terraform variables with sensitive data
+*.tfvars
+*.tfvars.backup
+
